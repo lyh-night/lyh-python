@@ -24,6 +24,18 @@ class Settings(BaseSettings):
     deepseek_api_key: str = ""
     deepseek_base_url: str = "https://api.deepseek.com"
     deepseek_model: str = "deepseek-chat"
+    llm_temperature: float = 0.0
+    llm_timeout_seconds: int = 60
+
+    # Agent 循环防失控
+    agent_recursion_limit: int = 25
+
+    # 安全（api_auth_token 为空 = 关闭鉴权，仅限本地开发）
+    api_auth_token: str = ""
+    rate_limit_per_minute: int = 30
+
+    # 本地化
+    app_timezone: str = "Asia/Shanghai"
 
 
 @lru_cache

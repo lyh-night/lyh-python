@@ -4,6 +4,7 @@ from typing import Annotated
 
 from fastapi import Depends
 
+from agent_service.agents.graph import AgentGraphs, get_agent_graphs
 from agent_service.core.config import Settings, get_settings
 
 
@@ -12,5 +13,6 @@ def get_app_settings() -> Settings:
     return get_settings()
 
 
-# 路由签名直接写 ``settings: AppSettings`` 即可完成注入
+# 路由签名直接写 ``settings: AppSettings`` / ``graphs: AgentGraphsDep`` 即可完成注入
 AppSettings = Annotated[Settings, Depends(get_app_settings)]
+AgentGraphsDep = Annotated[AgentGraphs, Depends(get_agent_graphs)]
